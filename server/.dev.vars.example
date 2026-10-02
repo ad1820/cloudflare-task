@@ -1,0 +1,7 @@
+# Cloudflare Worker Local Secrets
+# Copy this file to server/.dev.vars
+
+# Optional MongoDB Atlas connection for long-term match archive
+MONGODB_URI=
+MONGODB_DATABASE=90th_minute
+

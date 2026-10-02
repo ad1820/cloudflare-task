@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ninetieth-minute-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  "vars": {
+    "AI_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "ALLOWED_ORIGIN": "http://localhost:5173"
+  },
+  "ai": { "binding": "AI" },
+  "durable_objects": {
+    "bindings": [{ "name": "MATCH_ROOMS", "class_name": "MatchRoom" }]
+  },
+  "workflows": [
+    { "binding": "MATCH_WORKFLOW", "name": "match-simulation", "class_name": "MatchSimulationWorkflow" }
+  ],
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["MatchRoom"] }]
+}
